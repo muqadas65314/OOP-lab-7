@@ -1,71 +1,71 @@
-import java.util.*;
-/**
- *
- * @author Muqadas 
- */
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// Employee class
 class Employee {
     private String name;
     private double salary;
 
-   
+    // Constructor
     public Employee(String name, double salary) {
         this.name = name;
         this.salary = salary;
     }
 
-    
+    // Method to display employee details
     public void display() {
-        System.out.println("Name: " + name + ", Salary: " + salary);
+        System.out.println("Name: " + name + ", Salary: $" + salary);
     }
 
-    
+    // Getter for name
     public String getName() {
         return name;
     }
 }
+
+// Main class
 public class EmployeeManagement {
-
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Employee> employees = new ArrayList<>();
 
-        Scanner s = new Scanner(System.in);
-        ArrayList<Employee> e = new ArrayList<>();
+        // Adding employees to the list
+        employees.add(new Employee("Alice", 50000));
+        employees.add(new Employee("Bob", 60000));
+        employees.add(new Employee("Charlie", 55000));
 
-        
-        e.add(new Employee("Alice", 50000));
-        e(new Employee("Bob", 60000));
-        e(new Employee("Charlie", 55000));
-
-        
+        // Display employees before removal
         System.out.println("Employees List (Before Removal):");
-        displayEmployees(e);
+        displayEmployees(employees);
 
-        
+        // Ask user for employee name to remove
         System.out.print("\nEnter the name of the employee to remove: ");
-        String nameToRemove = s.nextLine();
-        removeEmployees(e, nameToRemove);
+        String nameToRemove = scanner.nextLine();
+        removeEmployee(employees, nameToRemove);
 
-        
+        // Display employees after removal
         System.out.println("\nEmployees List (After Removal):");
-        displayEmployee(e);
+        displayEmployees(employees);
 
         scanner.close();
     }
 
-    public static void displayEmployees(ArrayList<Employee> e){
-        if (e.isEmpty()) {
+    // Method to display all employees
+    public static void displayEmployees(ArrayList<Employee> employees) {
+        if (employees.isEmpty()) {
             System.out.println("No employees in the list.");
         } else {
-            for (Employee emp : e){
+            for (Employee emp : employees) {
                 emp.display();
             }
         }
     }
 
-   
-    public static void removeEmployee(ArrayList<Employee> e,String name) {
+    // Method to remove an employee by name
+    public static void removeEmployee(ArrayList<Employee> employees, String name) {
         boolean found = false;
-        for (int i = 0; i < e.size(); i++) {
-            if (e.get(i).getName().equalsIgnoreCase(name)) {
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getName().equalsIgnoreCase(name)) {
                 employees.remove(i);
                 found = true;
                 System.out.println("Employee '" + name + "' removed successfully.");
@@ -75,5 +75,7 @@ public class EmployeeManagement {
         if (!found) {
             System.out.println("Employee not found.");
         }
-    }
-}
+  
+
+ 
+   
